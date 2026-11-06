@@ -4,7 +4,6 @@ import os
 import sys
 try:
     from dotenv import load_dotenv
-    load = True
 except ImportError:
     print("python-dotenv not found, to install use:\n"
           "    pip install -r ex1/requirements.txt")
@@ -22,10 +21,9 @@ VARIABLES: dict[str, str | None] = {
 
 def load_config() -> dict[str, str | None]:
     config: dict[str, str | None] = {}
-    if load:
-        found: bool = load_dotenv()
-        if not found:
-            print("[WARNING] No .env file found, using environment/defaults")
+    found: bool = load_dotenv()
+    if not found:
+        print("[WARNING] No .env file found, using environment/defaults")
     for var, default in VARIABLES.items():
         value = os.getenv(var, default)
         if value is None:
@@ -48,7 +46,6 @@ def gitignore_has_env() -> bool:
 
 
 def show_config(config: dict[str, str | None]) -> None:
-    print("Configuration loaded:")
     mode = config["MATRIX_MODE"]
     production = mode == "production"
     print("Configuration loaded:")
@@ -76,7 +73,7 @@ def show_config(config: dict[str, str | None]) -> None:
 
 
 def security_check() -> None:
-    print("Configuration security check:")
+    print("\nConfiguration security check:")
     print("[OK] No hardcoded secrets detected")
     if gitignore_has_env():
         print("[OK] .env file properly ignored by git")
