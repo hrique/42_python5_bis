@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 def main() -> None:
     print("=== Kaboom 1 ===")
     print("Access to alchemy/grimoire/dark_spellbook.py directly")
