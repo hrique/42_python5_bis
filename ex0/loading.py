@@ -23,7 +23,7 @@ def imports() -> None:
             print(f"[MISSING] {name} - not installed")
     if missing:
         print("\nTo install them use one of the commands below:")
-        print("Install using pip = 'pip install -r requirements.txt'")
+        print("Install using pip = 'pip install -r ex0/requirements.txt'")
         print("Install using Poetry = 'poetry install'\n")
     print("\npip vs Poetry:")
     print("  requirements.txt declares what to install; "
